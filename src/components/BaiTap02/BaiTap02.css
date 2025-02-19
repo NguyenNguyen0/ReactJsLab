@@ -1,0 +1,20 @@
+#two-sum-app {
+    background-color: beige;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+#two-sum-app h1 {
+    color: darkgoldenrod;
+    text-shadow: 2px 2px #333;
+}
+
+#two-sum-app button {
+    margin: 8px;
+}
+
+#two-sum-app span {
+    color: darkcyan;
+    font-weight: bold;
+    margin-bottom: 8px;
+}

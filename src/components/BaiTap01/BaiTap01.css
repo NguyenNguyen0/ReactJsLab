@@ -1,0 +1,19 @@
+#hello-app {
+    padding: 6px;
+    background-color: lightblue;
+    border-radius: 5px;
+}
+
+#hello-app h1 {
+    text-shadow: 2px 2px #333;
+}
+
+#hello-app button {
+    margin: 8px;
+}
+
+#hello-app span {
+    text-transform: capitalize;
+    font-weight: bold;
+    text-shadow: 2px 2px #333;
+}

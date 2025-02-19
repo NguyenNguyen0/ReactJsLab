@@ -1,0 +1,24 @@
+#calculator-app {
+    background-color: lightpink;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+#calculator-app h1 {
+    color: sienna;
+    text-shadow: 2px 2px #333;
+}
+
+#calculator-app label {
+    color: brown;
+}
+
+#calculator-app button {
+    margin: 8px;
+}
+
+#calculator-app span {
+    color: darkblue;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
