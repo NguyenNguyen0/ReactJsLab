@@ -21,14 +21,11 @@ function App() {
     let currentInvest = invest;
     let nextInvest = invest
 
-    console.log(currentInvest);
-    console.log(currentYear);
     while (currentInvest <= goal) {
       nextInvest += rate;
       res.push({year: currentYear, invest: currentInvest, rate, result: nextInvest})
       currentYear++;
       currentInvest = nextInvest;
-      console.log(currentInvest);
     }
     setResult(res)
   }
