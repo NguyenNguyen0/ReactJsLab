@@ -1,0 +1,10 @@
+[
+    { "id": 1, "name": "Italian-style tomato salad", "time": "14 minutes", "image": "italianTomato" },
+    { "id": 2, "name": "Vegetable and shrimp spaghetti", "time": "15 minutes", "image": "vegetableAndShrimp" },
+    { "id": 3, "name": "Lotus delight salad", "time": "20 minutes", "image": "lotusSalad" },
+    { "id": 4, "name": "Snack cakes", "time": "21 minutes", "image": "snackCake" },
+    { "id": 5, "name": "Salad with cabbage and shrimp", "time": "32 minutes", "image": "saladCabbage" },
+    { "id": 6, "name": "Bean, shrimp, and potato salad", "time": "32 minutes", "image": "beanPotatoSalad" },
+    { "id": 7, "name": "Sunny-side up fried eggs", "time": "32 minutes", "image": "sunnyEgg" },
+    { "id": 8, "name": "Lotus delight salad", "time": "32 minutes", "image": "lotusSalad2" }
+]

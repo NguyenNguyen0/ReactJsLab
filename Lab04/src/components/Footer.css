@@ -1,0 +1,44 @@
+.footer {
+    padding: 0 20px;
+    background-color: rgb(29 34 40);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer ul li {
+    margin: 16px 0;
+}
+
+.footer ul li:first-child {
+    font-weight: 500;
+}
+
+.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer input {
+    padding: 10px;
+    width: 400px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.footer button {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: rgb(244 75 134);
+    margin-left: 20px;
+}
