@@ -1,8 +1,14 @@
-# React + Vite
+# Minh chứng buổi học tuần 03
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- BaiTapTuan02React/Lab03_01
 
-Currently, two official plugins are available:
+## Bài 01
+![Minh chứng](./proof.png "a title")
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+- BaiTapTuan02React/Lab03_02
+
+## Bài 02
+![Minh chứng](../Lab03_02/proof.png "a title")
+
+- BaiTapTuan02React/Lab04
