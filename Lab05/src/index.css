@@ -1,0 +1,16 @@
+#root {
+    overflow: hidden;
+}
+
+
+.flex {
+    display: flex !important;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-content-bettwen {
+    justify-content: space-between;
+}
