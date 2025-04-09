@@ -4,23 +4,23 @@ import { FiEdit2 } from "react-icons/fi";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
-const customersData = [
-  { id: 1, avatar: avatar, name: 'John Doe', company: 'Acme Corp', orderValue: 100, orderDate: '2023-01-01', status: 'In-progress' },
-  { id: 2, avatar: avatar, name: 'Jane Smith', company: 'Tech Inc', orderValue: 200, orderDate: '2023-02-01', status: 'New' },
-  { id: 3, avatar: avatar, name: 'Bob Johnson', company: 'Web Solutions', orderValue: 150, orderDate: '2023-03-01', status: 'Completed' },
-  { id: 4, avatar: avatar, name: 'Alice Brown', company: 'Design Studio', orderValue: 250, orderDate: '2023-04-01', status: 'New' },
-  { id: 5, avatar: avatar, name: 'Charlie Green', company: 'Marketing Agency', orderValue: 300, orderDate: '2023-05-01', status: 'In-progress' },
-  { id: 6, avatar: avatar, name: 'Diana Prince', company: 'Finance Co', orderValue: 400, orderDate: '2023-06-01', status: 'New' },
-  { id: 7, avatar: avatar, name: 'Ethan Hunt', company: 'Security Services', orderValue: 350, orderDate: '2023-07-01', status: 'Completed' },
-  { id: 8, avatar: avatar, name: 'Fiona Apple', company: 'Music Label', orderValue: 450, orderDate: '2023-08-01', status: 'New' },
-  { id: 9, avatar: avatar, name: 'George Clooney', company: 'Film Production', orderValue: 500, orderDate: '2023-09-01', status: 'In-progress' },
-  { id: 10, avatar: avatar, name: 'Hannah Montana', company: 'Entertainment Co', orderValue: 600, orderDate: '2023-10-01', status: 'New' }
-]
+// const customersData = [
+//   { id: 1, avatar: avatar, name: 'John Doe', company: 'Acme Corp', orderValue: 100, orderDate: '2023-01-01', status: 'In-progress' },
+//   { id: 2, avatar: avatar, name: 'Jane Smith', company: 'Tech Inc', orderValue: 200, orderDate: '2023-02-01', status: 'New' },
+//   { id: 3, avatar: avatar, name: 'Bob Johnson', company: 'Web Solutions', orderValue: 150, orderDate: '2023-03-01', status: 'Completed' },
+//   { id: 4, avatar: avatar, name: 'Alice Brown', company: 'Design Studio', orderValue: 250, orderDate: '2023-04-01', status: 'New' },
+//   { id: 5, avatar: avatar, name: 'Charlie Green', company: 'Marketing Agency', orderValue: 300, orderDate: '2023-05-01', status: 'In-progress' },
+//   { id: 6, avatar: avatar, name: 'Diana Prince', company: 'Finance Co', orderValue: 400, orderDate: '2023-06-01', status: 'New' },
+//   { id: 7, avatar: avatar, name: 'Ethan Hunt', company: 'Security Services', orderValue: 350, orderDate: '2023-07-01', status: 'Completed' },
+//   { id: 8, avatar: avatar, name: 'Fiona Apple', company: 'Music Label', orderValue: 450, orderDate: '2023-08-01', status: 'New' },
+//   { id: 9, avatar: avatar, name: 'George Clooney', company: 'Film Production', orderValue: 500, orderDate: '2023-09-01', status: 'In-progress' },
+//   { id: 10, avatar: avatar, name: 'Hannah Montana', company: 'Entertainment Co', orderValue: 600, orderDate: '2023-10-01', status: 'New' }
+// ]
 
 const statuses = ['New', 'Completed', 'In-progress']
 
 function CustomerDataTable() {
-  const [customers, setCustomers] = useState(customersData);
+  const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
