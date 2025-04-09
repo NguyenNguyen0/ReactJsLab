@@ -26,3 +26,6 @@
 
 ### 9. Moddal connect API
 ![Minh chứng](./MINHCHUNG/minhchung9.png "a title")
+
+### 10. Add user
+![Minh chứng](./MINHCHUNG/minhchung10.png "a title")

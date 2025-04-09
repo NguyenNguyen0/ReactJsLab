@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
 // import avatar from '../assets/imgs/Avatar 313.png'
 import { FiEdit2 } from "react-icons/fi";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
-import EditCustomerModal from './EditCustomerModal';
+import EditCustomerModal from './CustomerModal';
 
 // const customersData = [
 //   { id: 1, avatar: avatar, name: 'John Doe', company: 'Acme Corp', orderValue: 100, orderDate: '2023-01-01', status: 'In-progress' },
@@ -18,27 +17,16 @@ import EditCustomerModal from './EditCustomerModal';
 //   { id: 10, avatar: avatar, name: 'Hannah Montana', company: 'Entertainment Co', orderValue: 600, orderDate: '2023-10-01', status: 'New' }
 // ]
 
-const statuses = ['New', 'Completed', 'In-progress']
 
-function CustomerDataTable() {
-  const [customers, setCustomers] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+function CustomerDataTable({ customers, onEditCustomer }) {
+  // const [customers, setCustomers] = useState([]);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   // const handleSave = (updatedCustomer) => {
   //   setSelectedCustomer(updatedCustomer);
   //   console.log("Updated customer:", updatedCustomer);
   // };
-
-  useEffect(() => {
-    fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setCustomers(data.map(customer => ({...customer, status: statuses[Math.floor(Math.random() * 3)]})))
-      })
-      .catch((err) => console.log(err))
-  }, []);
 
   return (
     <div>
@@ -84,10 +72,7 @@ function CustomerDataTable() {
             </td>
             <td className="p-3">
               <button
-                onClick={() => {
-                  setSelectedCustomer(cust.id);
-                  setIsModalOpen(true);
-                }}
+                onClick={() => onEditCustomer(cust.id)}
                 className='text-slate-600 cursor-pointer hover:text-slate-900 text-xl'
               >
                 <FiEdit2 />
@@ -122,7 +107,7 @@ function CustomerDataTable() {
         </div>
       </div>
 
-      <EditCustomerModal
+      {/* <EditCustomerModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         customerId={selectedCustomer}
@@ -134,7 +119,7 @@ function CustomerDataTable() {
           setCustomers(updatedList);
           setSelectedCustomer(null);
         }}
-      />
+      /> */}
     </div>
   )
 }

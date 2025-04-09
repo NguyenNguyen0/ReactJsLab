@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-export default function EditCustomerModal({ isOpen, onClose, customerId, onSave }) {
+export default function CustomerModal({ isOpen, onClose, customerId, onSave }) {
+  const isEditMode = !!customerId;
   const [customer, setCustomer] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -29,7 +30,15 @@ export default function EditCustomerModal({ isOpen, onClose, customerId, onSave 
         company: customer.company || '',
         orderValue: customer.orderValue || '',
         orderDate: customer.orderDate || '',
-        status: customer.status || '',
+        status: customer.status || 'New',
+      });
+    } else {
+      setFormData({
+        name: '',
+        company: '',
+        orderValue: '',
+        orderDate: '',
+        status: 'New',
       });
     }
   }, [customer]);
@@ -42,8 +51,13 @@ export default function EditCustomerModal({ isOpen, onClose, customerId, onSave 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`https://67e0fc4258cc6bf78523ac77.mockapi.io/book/${customer.id}`, {
-        method: 'PUT',
+      const url = isEditMode
+        ? `https://67e0fc4258cc6bf78523ac77.mockapi.io/book/${customer.id}`
+        : `https://67e0fc4258cc6bf78523ac77.mockapi.io/book`;
+      const method = isEditMode ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -58,12 +72,12 @@ export default function EditCustomerModal({ isOpen, onClose, customerId, onSave 
     }
   };
 
-  if (!isOpen || !customer) return null;
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/20 bg-opacity-30 flex items-center justify-center">
       <div className="bg-white p-6 rounded-xl w-[400px] shadow-lg">
-        <h2 className="text-xl font-semibold mb-4">Edit Customer</h2>
+        <h2 className="text-xl font-semibold mb-4">{isEditMode ? 'Edit' : 'Add'} Customer</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="text"
@@ -109,7 +123,9 @@ export default function EditCustomerModal({ isOpen, onClose, customerId, onSave 
           </select>
           <div className="flex justify-end gap-2">
             <button type="button" onClick={onClose} className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">Cancel</button>
-            <button type="submit" className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Save</button>
+            <button type="submit" className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+              {isEditMode ? 'Save Changes' : 'Add Customer'}
+            </button>
           </div>
         </form>
       </div>
