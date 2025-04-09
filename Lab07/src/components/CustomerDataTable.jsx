@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import avatar from '../assets/imgs/Avatar 313.png'
+// import avatar from '../assets/imgs/Avatar 313.png'
 import { FiEdit2 } from "react-icons/fi";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
@@ -25,10 +25,11 @@ function CustomerDataTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
 
-  const handleSave = (updatedCustomer) => {
-    setSelectedCustomer(updatedCustomer);
-    console.log("Updated customer:", updatedCustomer);
-  };
+  // const handleSave = (updatedCustomer) => {
+  //   setSelectedCustomer(updatedCustomer);
+  //   console.log("Updated customer:", updatedCustomer);
+  // };
+
   useEffect(() => {
     fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
       .then((response) => response.json())
@@ -84,7 +85,7 @@ function CustomerDataTable() {
             <td className="p-3">
               <button
                 onClick={() => {
-                  setSelectedCustomer(cust);
+                  setSelectedCustomer(cust.id);
                   setIsModalOpen(true);
                 }}
                 className='text-slate-600 cursor-pointer hover:text-slate-900 text-xl'
@@ -124,7 +125,7 @@ function CustomerDataTable() {
       <EditCustomerModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        customer={selectedCustomer}
+        customerId={selectedCustomer}
         onSave={(updated) => {
           // Cập nhật lại danh sách
           const updatedList = customers.map(c =>

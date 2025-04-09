@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-export default function EditCustomerModal({ isOpen, onClose, customer, onSave }) {
+export default function EditCustomerModal({ isOpen, onClose, customerId, onSave }) {
+  const [customer, setCustomer] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -8,6 +9,17 @@ export default function EditCustomerModal({ isOpen, onClose, customer, onSave })
     orderDate: '',
     status: '',
   });
+
+  useEffect(() => {
+    if (!customerId) return;
+    fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book/' + customerId)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setCustomer(data)
+        })
+        .catch((err) => console.log(err))
+  }, [customerId]);
 
   // Khi `customer` thay đổi, cập nhật lại form
   useEffect(() => {
@@ -39,6 +51,7 @@ export default function EditCustomerModal({ isOpen, onClose, customer, onSave })
       });
       const updated = await res.json();
       onSave(updated);
+      console.log('Update successful:', updated);
       onClose();
     } catch (err) {
       console.error('Update failed:', err);
