@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import bell from '../assets/imgs/Bell 1.png'
 import help from '../assets/imgs/Question 1.png'
 import avatar from '../assets/imgs/Avatar 313.png'
@@ -12,6 +12,17 @@ import fileText from '../assets/imgs/File text 1.png'
 import CustomerDataTable from '../components/CustomerDataTable'
 
 function DashBoard() {
+  const [turnover, setTurnover] = useState({})
+
+  useEffect(() => {
+    fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/statistic')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data[0]);
+        setTurnover(data[0])
+      })
+  }, [])
+
   return (
     <main>
       <header className='flex items-center justify-between'>
@@ -47,9 +58,9 @@ function DashBoard() {
                 <img src={cart} alt="" />
               </button>
               <h1 className='text-2xl text-gray-800 font-bold'>Turnover</h1>
-              <h2 className='text-4xl text-gray-800 my-5 font-bold'>$92,405</h2>
+              <h2 className='text-4xl text-gray-800 my-5 font-bold'>${turnover.profit}</h2>
               <p>
-                <span className='text-green-700 font-bold mr-2'>5.39%</span>
+                <span className='text-green-700 font-bold mr-2'>{turnover.percentChange}%</span>
                 <span className='text-gray-800'>period of change</span>
               </p>
             </div>

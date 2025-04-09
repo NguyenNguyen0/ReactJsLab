@@ -20,17 +20,17 @@ const customersData = [
 const statuses = ['New', 'Completed', 'In-progress']
 
 function CustomerDataTable() {
-  const [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState(customersData);
 
-  useEffect(() => {
-    fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setCustomers(data.map(customer => ({...customer, status: statuses[Math.floor(Math.random() * 3)]})))
-      })
-      .catch((err) => console.log(err))
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCustomers(data.map(customer => ({...customer, status: statuses[Math.floor(Math.random() * 3)]})))
+  //     })
+  //     .catch((err) => console.log(err))
+  // }, []);
 
   return (
     <div>
