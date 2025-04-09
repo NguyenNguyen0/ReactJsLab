@@ -3,6 +3,7 @@ import avatar from '../assets/imgs/Avatar 313.png'
 import { FiEdit2 } from "react-icons/fi";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
+import EditCustomerModal from './EditCustomerModal';
 
 // const customersData = [
 //   { id: 1, avatar: avatar, name: 'John Doe', company: 'Acme Corp', orderValue: 100, orderDate: '2023-01-01', status: 'In-progress' },
@@ -21,7 +22,13 @@ const statuses = ['New', 'Completed', 'In-progress']
 
 function CustomerDataTable() {
   const [customers, setCustomers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
+  const handleSave = (updatedCustomer) => {
+    setSelectedCustomer(updatedCustomer);
+    console.log("Updated customer:", updatedCustomer);
+  };
   useEffect(() => {
     fetch('https://67e0fc4258cc6bf78523ac77.mockapi.io/book')
       .then((response) => response.json())
@@ -49,37 +56,43 @@ function CustomerDataTable() {
           </tr>
         </thead>
         <tbody>
-          {customers.map(customer => (
-            <tr key={customer.id}>
-              <td className="p-3">
-                <input className="w-5 h-5" type="checkbox" />
-              </td>
-              <td className="p-3 flex items-center gap-2">
-                <img src={customer.avatar} alt={customer.name} className="w-8 h-8 rounded-full ml-14" />
-                {customer.name}
-              </td>
-              <td className="p-3 text-left">{customer.company}</td>
-              <td className="p-3">${customer.orderValue}</td>
-              <td className="p-3">{customer.orderDate}</td>
-              <td className="p-3">
-                <span className={`px-2 py-1 rounded-full ${
-                  customer.status === 'Completed'
-                    ? 'bg-green-100 text-green-800'
-                    : customer.status === 'New'
-                      ? 'bg-blue-100 text-blue-800'
-                      : customer.status === 'In-progress'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : ''
-                  }`}>
-                  {customer.status}
-                </span>
-              </td>
-              <td className="p-3">
-                <button className='text-slate-600 cursor-pointer hover:text-slate-900 text-xl'>
-                  <FiEdit2 />
-                </button>
-              </td>
-            </tr>
+          {customers.map(cust => (
+            <tr key={cust.id}>
+            <td className="p-3">
+              <input className="w-5 h-5" type="checkbox" />
+            </td>
+            <td className="p-3 flex items-center gap-2">
+              <img src={cust.avatar} alt={cust.name} className="w-8 h-8 rounded-full ml-14" />
+              {cust.name}
+            </td>
+            <td className="p-3 text-left">{cust.company}</td>
+            <td className="p-3">${cust.orderValue}</td>
+            <td className="p-3">{cust.orderDate}</td>
+            <td className="p-3">
+              <span className={`px-2 py-1 rounded-full ${
+                cust.status === 'Completed'
+                  ? 'bg-green-100 text-green-800'
+                  : cust.status === 'New'
+                    ? 'bg-blue-100 text-blue-800'
+                    : cust.status === 'In-progress'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : ''
+              }`}>
+                {cust.status}
+              </span>
+            </td>
+            <td className="p-3">
+              <button
+                onClick={() => {
+                  setSelectedCustomer(cust);
+                  setIsModalOpen(true);
+                }}
+                className='text-slate-600 cursor-pointer hover:text-slate-900 text-xl'
+              >
+                <FiEdit2 />
+              </button>
+            </td>
+          </tr>          
           ))}
         </tbody>
       </table>
@@ -107,6 +120,20 @@ function CustomerDataTable() {
           </button>
         </div>
       </div>
+
+      <EditCustomerModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        customer={selectedCustomer}
+        onSave={(updated) => {
+          // Cập nhật lại danh sách
+          const updatedList = customers.map(c =>
+            c.id === updated.id ? updated : c
+          );
+          setCustomers(updatedList);
+          setSelectedCustomer(null);
+        }}
+      />
     </div>
   )
 }
