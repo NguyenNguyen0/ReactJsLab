@@ -8,6 +8,8 @@ import { themeStore } from './app/themeStore'
 import Theme from "./components/Theme"
 import { cartStore } from './app/cartStore'
 import Cart from "./components/Cart"
+import { todoAPIStore } from './app/todoAPIStore'
+import TodoAPI from "./components/TodoAPI"
 
 
 function App() {
@@ -26,9 +28,10 @@ function App() {
       <Provider store={cartStore}>
         <Cart />
       </Provider>
-
+      <Provider store={todoAPIStore}>
+        <TodoAPI />
+      </Provider>
     </div>
-
   )
 }
 

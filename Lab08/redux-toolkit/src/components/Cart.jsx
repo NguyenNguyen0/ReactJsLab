@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addItem, updateQuantity, removeItem } from '../features/cart/cartSlice'
 
 function Cart() {
-  const cart = useSelector(state => state.cart.cart)
-  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart.cart);
+  const dispatch = useDispatch();
 
   const [items, _] = useState([
     { id: 1, name: 'Item 1', price: 10 },
